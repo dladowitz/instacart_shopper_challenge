@@ -1,4 +1,6 @@
 class ApplicantsController < ApplicationController
+  before_action :set_applicant, only: [:edit, :update]
+
   def new
     @applicant = Applicant.new
   end
@@ -15,7 +17,9 @@ class ApplicantsController < ApplicationController
   end
 
   def update
-    # your code here
+    @applicant.update_attributes(applicant_params)
+    
+    render :thanks
   end
 
   def show
@@ -24,7 +28,12 @@ class ApplicantsController < ApplicationController
 
   private
 
+  def set_applicant
+    @applicant = Applicant.find params[:id]
+  end
+
   def applicant_params
-    params.require(:applicant).permit(:first_name, :last_name, :email, :phone, :phone_type, :region)
+    params.require(:applicant).permit(:first_name, :last_name, :email, :phone,
+                                      :phone_type, :region, :confirm_background_check)
   end
 end

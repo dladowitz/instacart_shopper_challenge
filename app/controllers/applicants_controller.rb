@@ -8,17 +8,19 @@ class ApplicantsController < ApplicationController
   def create
     @applicant = Applicant.new applicant_params
     @applicant.workflow_state = "applied"
-    if @applicant.save
 
+    if @applicant.save
+      flash[:success] = "Application created successfully"
       render :confirmation
     else
+      flash[:danger] = "Something has gone wrong"
       render :new
     end
   end
 
   def update
     @applicant.update_attributes(applicant_params)
-    
+
     render :thanks
   end
 

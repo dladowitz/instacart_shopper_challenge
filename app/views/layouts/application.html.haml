@@ -3,8 +3,25 @@
   %head
     %title= content_for?(:title) ? yield(:title) : 'Shopper Challenge'
 
-    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}/
     %meta{:name => 'description', content: 'Shopper Challenge'}
+    / FAVICONS
+    %link{:href => "images/favicons/favicon.ico", :rel => "icon"}/
+    %link{:href => "images/favicons/apple-touch-icon.png", :rel => "apple-touch-icon"}/
+
+    / GOOGLE FONTS
+    %link{:href => "http://fonts.googleapis.com/css?family=Montserrat:400,700", :rel => "stylesheet"}/
+    %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800", :rel => "stylesheet"}/
+    / LIBRARIES CSS
+    %link{:href => "css/bootstrap.min.css", :rel => "stylesheet"}/
+    %link{:href => "css/font-awesome.min.css", :rel => "stylesheet"}/
+    %link{:href => "css/animate.min.css", :rel => "stylesheet"}/
+    / SPECIFIC CSS
+    %link{:href => "css/style.css", :rel => "stylesheet"}/
+    / COLORS
+    %link#color-css{:href => "css/green.css", :rel => "stylesheet"}
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
@@ -12,9 +29,28 @@
     = csrf_meta_tags
 
   %body
-    %header
-      = render 'layouts/navigation'
+    #document.document
 
-    %main{role: 'main'}
-      = render 'layouts/messages'
+
+      = render 'layouts/navigation'
+      -# = render 'layouts/messages'
       = yield
+
+      = render 'layouts/footer'
+
+
+    -# LIBRARIES JS
+    %script{:src => "js/jquery-1.11.2.min.js"}
+    %script{:src => "js/bootstrap.min.js"}
+    %script{:src => "js/respimage.min.js"}
+    %script{:src => "js/jpreloader.min.js"}
+    %script{:src => "js/smoothscroll.min.js"}
+    %script{:src => "js/jquery.nav.min.js"}
+    %script{:src => "js/jquery.inview.min.js"}
+    %script{:src => "js/jquery.counterup.min.js"}
+    %script{:src => "js/jquery.stellar.min.js"}
+    %script{:src => "js/responsiveslides.min.js"}
+    /
+      MAIN SCRIPT
+      \=================================
+    %script{:src => "js/script.js"}

@@ -1,1 +1,41 @@
-- # your applicant landing page/form goes here!
+-# HERO
+%section#hero.hero-section.hero-layout-classic.hero-layout-features-and-form.section.section-dark
+  .section-background
+    / IMAGE BACKGROUND
+    .section-background-image.parallax{"data-stellar-ratio" => "0.4"}
+      %img{:alt => "", :src => "http://blogs-images.forbes.com/briansolomon/files/2015/01/0116_ampc-instacart_1200x675.jpg", :style => "opacity: 0.35;"}/
+
+  .container
+    .hero-content
+      .hero-content-inner
+        .hero-heading.text-center.row{"data-animation" => "fadeIn"}
+          .col-md-10.col-md-offset-1
+            %h1.hero-title Make Money Shopping
+            %p.hero-tagline Apply in under 5 minutes! Attend an in-person session and start work within one week!
+        .hero-features.row
+          .hero-features-left.col-md-7
+            %p.lead No car needed. Now hiring in-store shoppers, cashiers and drivers.
+            %ul.icon-list
+              %li
+                %span.icon-list-icon.fa.fa-hand-o-up{"data-animation" => "bounceIn"}
+                %h4.icon-list-title Be Independent
+                %p Schedule work around your own life
+              %li
+                %span.icon-list-icon.fa.fa-heart-o{"data-animation" => "bounceIn"}
+                %h4.icon-list-title Have Fun
+                %p Spend time shopping, exploring new things and being active.
+              %li
+                %span.icon-list-icon.fa.fa-lightbulb-o{"data-animation" => "bounceIn"}
+                %h4.icon-list-title Earn extra income
+                %p Get paid weekly. Work Sundays to maximize your hours and pay.
+          .hero-features-right.col-md-5{"data-animation" => "fadeIn"}
+            -# Form
+            = simple_form_for @applicant do |f|
+              = f.input :first_name, wrapper_html: { class: 'first-name' }
+              = f.input :last_name, wrapper_html: { class: 'last-name' }
+              = f.input :email, wrapper_html: { class: 'email-address' }
+              = f.input :phone, wrapper_html: { class: 'phone-number' }
+              = f.select :phone_type, options_for_select(Applicant::PHONE_TYPES), {}, {class: "form-control phone-type"}
+              = f.select :region, options_for_select(Applicant::REGIONS), {}, {class: "form-control region"}
+
+              = f.button :submit, value: "Apply", class: "btn btn-primary btn-lg btn-block"

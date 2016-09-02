@@ -10,7 +10,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'rails-assets-nvd3'
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
 gem 'haml-rails'
 
 gem 'simple_form'

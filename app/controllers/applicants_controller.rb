@@ -11,6 +11,7 @@ class ApplicantsController < ApplicationController
 
     if @applicant.save
       flash[:success] = "Application created successfully"
+      session[:applicant_id] = @applicant.id
       render :confirmation
     else
       flash[:danger] = "Something has gone wrong"
@@ -19,19 +20,19 @@ class ApplicantsController < ApplicationController
   end
 
   def update
-    @applicant.update_attributes(applicant_params)
-
-    render :thanks
-  end
-
-  def show
-    # your code here
+    if @applicant.update_attributes(applicant_params)
+      render :thanks
+    else
+      render :edit
+    end
   end
 
   private
 
   def set_applicant
-    @applicant = Applicant.find params[:id]
+    @applicant = Applicant.find session[:applicant_id]
+
+    render :new unless @applicant
   end
 
   def applicant_params

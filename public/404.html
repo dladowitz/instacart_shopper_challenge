@@ -10,6 +10,9 @@
     text-align: center;
     font-family: arial, sans-serif;
     margin: 0;
+    background-image: url('sad-instacart-carrot.jpg');
+    background-repeat: no-repeat;
+    height: 900px;
   }
 
   div.dialog {
@@ -40,7 +43,7 @@
   div.dialog > p {
     margin: 0 0 1em;
     padding: 1em;
-    background-color: #F7F7F7;
+    /*background-color: #F7F7F7;*/
     border: 1px solid #CCC;
     border-right-color: #999;
     border-left-color: #999;
@@ -50,18 +53,22 @@
     border-top-color: #DADADA;
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+
+  }
+
+  div.background-image {
   }
   </style>
 </head>
 
 <body>
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+  <div class="background-image">
+    <!-- This file lives in public/404.html -->
+    <div class="dialog">
+      <div>
+        <h1>404: The page you were looking for doesn't exist.</h1>
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
 </body>
 </html>

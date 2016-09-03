@@ -1,2 +1,22 @@
-Instacart needs to run a background check to complete you application. Please confirm that we may do so on your behalf.
-<button> Confirm </button>
+%section#hero.hero-section.hero-layout-simple.hero-fullscreen.section.section-dark
+  .section-background
+    / IMAGE BACKGROUND
+    .section-background-image.parallax{"data-stellar-ratio" => "0.4"}
+      %img{:alt => "", :src => "http://media.cmgdigital.com/shared/img/photos/2014/09/08/dc/a9/RBB_whole_foods_7.JPG", :style => "opacity: 0.3;"}/
+
+  .container
+    .hero-content
+      .hero-content-inner
+        .row
+          .col-md-10.col-md-offset-1
+            .hero-heading.text-center{"data-animation" => "fadeIn"}
+              %h1.hero-title Almost Done
+              %p.hero-tagline
+                We need to run a background check to complete your application.
+                %br
+                Can we run one on your behalf?
+            %p.hero-buttons.text-center
+              -# = link_to "I Agree", "/applicants/fake_id", method: :patch,
+              = link_to "I Agree", applicant_path("fake_id", applicant: {confirm_background_check: true}), method: :patch, class: "btn btn-lg btn-primary"
+
+              = link_to "No Way Jose", "#", class: "btn btn-lg btn-default"

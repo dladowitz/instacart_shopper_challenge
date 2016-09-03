@@ -1,1 +1,16 @@
-edit page
+-# HERO
+%section#hero.hero-section.hero-layout-classic.hero-layout-features-and-form.section.section-dark
+  .section-background
+    / IMAGE BACKGROUND
+    .section-background-image.parallax{"data-stellar-ratio" => "0.4"}
+      %img{:alt => "", :src => "/assets/wholefoods.jpg", :style => "opacity: 0.35;"}/
+
+  .container
+    .hero-content
+      .hero-content-inner
+        .hero-heading.text-center.row{"data-animation" => "fadeIn"}
+          .col-md-10.col-md-offset-1
+            %h1.hero-title Update Application
+            .hero-features.row
+          .hero.col-md-8.col-md-offset-2{"data-animation" => "fadeIn"}
+            = render 'form'

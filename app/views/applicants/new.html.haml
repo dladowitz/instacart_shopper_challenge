@@ -28,14 +28,5 @@
                 %span.icon-list-icon.fa.fa-lightbulb-o{"data-animation" => "bounceIn"}
                 %h4.icon-list-title Earn extra income
                 %p Get paid weekly. Work Sundays to maximize your hours and pay.
-          .hero-features-right.col-md-5{"data-animation" => "fadeIn"}
-            -# Form
-            = simple_form_for @applicant do |f|
-              = f.input :first_name, wrapper_html: { class: 'first-name' }
-              = f.input :last_name, wrapper_html: { class: 'last-name' }
-              = f.input :email, wrapper_html: { class: 'email-address' }
-              = f.input :phone, wrapper_html: { class: 'phone-number' }
-              = f.select :phone_type, options_for_select(Applicant::PHONE_TYPES), {}, {class: "form-control phone-type"}
-              = f.select :region, options_for_select(Applicant::REGIONS), {}, {class: "form-control region"}
-
-              = f.button :submit, value: "Apply", class: "btn btn-primary btn-lg btn-block"
+          .hero-features-right.col-md-5
+            = render 'form'

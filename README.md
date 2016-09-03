@@ -1,3 +1,21 @@
+## Setup
+1. `bundle install`
+2. `rake db:migrate`
+
+## Rspec
+Specs have been created for Applicants and Funnels
+
+1. `rake db:test:prepare`
+2. `rspec`
+
+## Heroku
+Check out a live version here: <a href="https://instacart-shopper-challenge.herokuapp.com/">instacart-shopper-challenge.herokuapp.com</a>
+
+
+
+<br>
+<br>
+
 Shopper Challenge
 =================
 

@@ -1,25 +1,28 @@
-- # feel free to override any and all parts of this to make it more to your liking
-- # this is a very bare-bones implementation of a funnel analytics view
+%section#hero.hero-section.hero-layout-simple.hero-fullscreen.section.section-dark#hero-funnel
+  .section-background
+    / IMAGE BACKGROUND
+    .section-background-image.parallax{"data-stellar-ratio" => "0.4"}
+      %img{:alt => "", :src => "https://d2guulkeunn7d8.cloudfront.net/assets/landing15/grocery_being_delivered_1-71da135a35a8d85274e57fe79665cb73.jpg", :style => "opacity: 0.05;"}/
 
-.container
-  .row
-    #funnel-chart
-      %svg
-
-  .row
-    %table.table
-      %thead
-        %tr
-          %th
-
-          - Applicant::WORKFLOW_STATES.each do |state|
-            %th= state.humanize
-      %tbody
-        - @funnel.each do |date, state_counts|
-          %tr
-            %td= date
-            - Applicant::WORKFLOW_STATES.each do |state|
-              %td= state_counts[state]
+  .container
+    .hero-content
+      .hero-content-inner
+        .row
+          #funnel-chart
+            %svg
+        .row
+          %table.table
+            %thead
+              %tr
+                %th
+                - Applicant::WORKFLOW_STATES.each do |state|
+                  %th= state.humanize
+            %tbody
+              - @funnel.each do |date, state_counts|
+                %tr
+                  %td= date
+                  - Applicant::WORKFLOW_STATES.each do |state|
+                    %td= state_counts[state]
 
 :coffeescript
   data = #{@chart_funnel.to_json};

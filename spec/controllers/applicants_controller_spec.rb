@@ -40,8 +40,11 @@ describe ApplicantsController do
 
   describe "GET edit" do
     let(:applicant) { Applicant.create first_name: "Tony", last_name: "Stark", email: "tony@starklabs.com", phone: "415 111 2222", phone_type: "iPhone 6/6 Plus", region: "San Francisco Bay Area", workflow_state: "applied" }
-    subject { get :edit, id: applicant.id }
-    before  { subject }
+    subject { get :edit, id: "hidden"}
+    before  do
+      session[:applicant_id] = applicant.id
+      subject
+    end
 
     it "renders the  template" do
       expect(response).to render_template :edit
@@ -54,14 +57,15 @@ describe ApplicantsController do
 
   describe "PATCH update" do
     let(:applicant) { Applicant.create first_name: "Tony", last_name: "Stark", email: "tony@starklabs.com", phone: "415 111 2222", phone_type: "iPhone 6/6 Plus", region: "San Francisco Bay Area", workflow_state: "applied" }
+    before { session[:applicant_id] = applicant.id }
 
     it "updates the background_check field" do
-      patch :update, id: applicant.id, applicant: { confirm_background_check: true }
+      patch :update, id: "hidden", applicant: { confirm_background_check: true }
       expect(applicant.reload.confirm_background_check).to be true
     end
 
     it "updates phone and email field" do
-      patch :update, id: applicant.id, applicant: { phone: "999 999 9999", email: "thor@asgard.com" }
+      patch :update, id: "hidden", applicant: { phone: "999 999 9999", email: "thor@asgard.com" }
       expect(applicant.reload.phone).to eq "999 999 9999"
       expect(applicant.reload.email).to eq "thor@asgard.com"
     end

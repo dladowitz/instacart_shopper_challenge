@@ -10,4 +10,8 @@ class Applicant < ActiveRecord::Base
   validates :phone_type, presence: true
   validates :workflow_state, presence: true
   validates :region, presence: true
+
+  def week
+    updated_at.strftime('%Y-%W')
+  end
 end

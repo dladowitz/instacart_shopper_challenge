@@ -10,11 +10,9 @@ class ApplicantsController < ApplicationController
     @applicant.workflow_state = "applied"
 
     if @applicant.save
-      flash[:success] = "Application created successfully"
       session[:applicant_id] = @applicant.id
       render :confirmation
     else
-      flash[:danger] = "Something has gone wrong"
       render :new
     end
   end

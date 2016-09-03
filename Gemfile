@@ -8,7 +8,6 @@ gem 'jquery-rails'
 gem 'rails', '4.2.0'
 gem 'rails-assets-nvd3'
 gem 'sass-rails', '~> 5.0'
-gem 'sqlite3'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 # gem 'bootstrap-sass'
@@ -33,4 +32,9 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
 end

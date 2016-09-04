@@ -1,5 +1,10 @@
 class FunnelsController < ApplicationController
   def index
+    @database_type = ActiveRecord::Base.connection.instance_values["config"][:adapter]
+    unless @database_type == "sqlite3"
+      render :sorry
+    end
+
     @funnel = FunnelQueryGenerator.query(params[:start_date], params[:end_date])
 
     respond_to do |format|

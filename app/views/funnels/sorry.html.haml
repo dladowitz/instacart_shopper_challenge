@@ -1,0 +1,16 @@
+%section#hero.hero-section.hero-layout-simple.hero-fullscreen.section.section-dark
+  .section-background
+    / IMAGE BACKGROUND
+    .section-background-image.parallax{"data-stellar-ratio" => "0.4"}
+      %img{:alt => "", :src => "/assets/catsDB.jpg", :style => "opacity: 0.5;"}/
+
+  .container
+    .hero-content
+      .hero-content-inner
+        .row
+          .col-md-10.col-md-offset-1
+            .hero-heading.text-center{"data-animation" => "fadeIn"}
+              %h1.hero-title Sorry
+              %p.hero-tagline
+                ="This query was setup for a SQLite3 database, but this system is using: #{@database_type}."
+                %br

@@ -1,13 +1,7 @@
 class FunnelsController < ApplicationController
+  before_action :verify_db
+
   def index
-    @database_type = ActiveRecord::Base.connection.instance_values["config"][:adapter]
-
-    unless @database_type == "sqlite3"
-      render :sorry and return
-    end
-
-    puts "trying to run FunnelQueryGenerator"
-
     @funnel = FunnelQueryGenerator.query(params[:start_date], params[:end_date])
 
     respond_to do |format|
@@ -17,6 +11,14 @@ class FunnelsController < ApplicationController
   end
 
   private
+
+  def verify_db
+    @database_type = ActiveRecord::Base.connection.instance_values["config"][:adapter]
+
+    unless @database_type == "sqlite3"
+      render :sorry and return
+    end
+  end
 
   # generates a formatted version of the funnel for display in d3
   def formatted_funnel

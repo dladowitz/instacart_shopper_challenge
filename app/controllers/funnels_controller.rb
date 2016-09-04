@@ -1,7 +1,6 @@
 class FunnelsController < ApplicationController
   def index
-    set_dates
-    @funnel = Funnel.new(@start_date, @end_date).create_funnel
+    @funnel = FunnelQueryGenerator.query(params[:start_date], params[:end_date])
 
     respond_to do |format|
       format.html { @chart_funnel = formatted_funnel }

@@ -6,6 +6,8 @@ class FunnelsController < ApplicationController
       render :sorry and return
     end
 
+    puts "trying to run FunnelQueryGenerator"
+
     @funnel = FunnelQueryGenerator.query(params[:start_date], params[:end_date])
 
     respond_to do |format|

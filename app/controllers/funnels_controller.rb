@@ -1,5 +1,6 @@
 class FunnelsController < ApplicationController
   def index
+    puts "Starting in FunnelsController"
     @database_type = ActiveRecord::Base.connection.instance_values["config"][:adapter]
     puts "Database Type: #{@database_type}"
 

@@ -18,16 +18,6 @@ class FunnelsController < ApplicationController
 
   private
 
-  def set_dates
-    if params[:start_date] && params[:end_date]
-      @start_date = DateTime.parse(params[:start_date])
-      @end_date = DateTime.parse(params[:end_date])
-    else
-      @start_date = DateTime.parse("2014-12-01")
-      @end_date = DateTime.parse("2014-12-21")
-    end
-  end
-
   # generates a formatted version of the funnel for display in d3
   def formatted_funnel
     formatted = Hash.new { |h, k| h[k] = [] }
